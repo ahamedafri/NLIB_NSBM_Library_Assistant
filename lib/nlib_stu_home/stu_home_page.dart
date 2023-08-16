@@ -12,6 +12,10 @@ class _MainHomePage extends State<MainHomePage> {
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currentPageValue = 0.0;
   double _schaleFactor = 0.8, _height = 220.0;
+  int currentTab = 0;
+  final List<Widget> screens = [];
+  final PageStorageBucket bucket = PageStorageBucket();
+  // Widget currentScreen = Dashborad();
 
   @override
   void initState() {
@@ -42,7 +46,7 @@ class _MainHomePage extends State<MainHomePage> {
             //top navigation
             Container(
               height: 60,
-              width: 400,
+              width: 380,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30.0),
                 color: Colors.green,
