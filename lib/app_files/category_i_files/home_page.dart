@@ -250,7 +250,7 @@ class _MainHomePage extends State<MainHomePage> {
                 children: [
                   TextHeader(
                     text: mainHeader,
-                    fontColor: AppColorsStringFormat.NORMAL_TEXT_COLOR,
+                    fontColor: AppColors.NORMAL_TEXT_COLOR,
                   ),
                   SmallText(text: 'In Library'),
                   SizedBox(height: 50),

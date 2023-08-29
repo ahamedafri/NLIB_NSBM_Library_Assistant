@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nlib_library_assistant/utils/app_colors.dart';
+import 'package:nlib_library_assistant/widgets/text_formatter.dart';
 import './drawer.dart';
 
 class FavouriteBooks extends StatelessWidget {
@@ -9,7 +11,7 @@ class FavouriteBooks extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         toolbarHeight: 80,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.CONTAINER_WHITE,
         title: Container(
           child: Column(children: [
             SizedBox(height: 10),
@@ -19,7 +21,7 @@ class FavouriteBooks extends StatelessWidget {
                 width: 380,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30.0),
-                  color: Colors.green,
+                  color: AppColors.BASE_COLOR,
                 ),
                 child: Stack(
                   children: [
@@ -46,7 +48,7 @@ class FavouriteBooks extends StatelessWidget {
                                   height: 50,
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: Colors.green[100]),
+                                      color: AppColors.BASE_COLOR),
                                   child: Icon(Icons.search),
                                 ),
                               ),
@@ -61,7 +63,7 @@ class FavouriteBooks extends StatelessWidget {
                                     width: 50,
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
-                                        color: Colors.white),
+                                        color: AppColors.CONTAINER_WHITE),
                                   ),
                                 );
                               }),
@@ -94,7 +96,7 @@ class FavouriteBooks extends StatelessWidget {
                     decoration: BoxDecoration(
                       border: Border(
                         bottom: BorderSide(
-                          color: Colors.grey,
+                          color: AppColors.CONTAINER_GRAY,
                         ),
                       ),
                     ),
@@ -104,15 +106,21 @@ class FavouriteBooks extends StatelessWidget {
                         Container(
                           height: 90,
                           width: 50,
-                          color: Colors.green,
+                          color: AppColors.BASE_COLOR,
                         ),
                         SizedBox(width: 50),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('Head First java'),
+                            BoldText(
+                              text: 'Head First Java',
+                              fontSize: 14,
+                            ),
                             SizedBox(height: 10),
-                            Text('kathy sierra'),
+                            SmallText(
+                              text: 'kathy sierra',
+                              fontSize: 10,
+                            ),
                           ],
                         ),
                       ],

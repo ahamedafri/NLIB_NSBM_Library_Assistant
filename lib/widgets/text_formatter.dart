@@ -6,33 +6,67 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+class WelcomeFont extends StatelessWidget {
+  final String text;
+  final Color fontColor;
+  final double fontSize;
+  final int maxLines;
+
+  WelcomeFont(
+      {this.fontSize = 35,
+      this.fontColor = const Color(0xff000000),
+      required this.text,
+      this.maxLines = 1});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        color: fontColor,
+        fontSize: fontSize,
+        fontFamily: GoogleFonts.roboto().toString(),
+        fontWeight: FontWeight.w800,
+      ),
+      overflow: TextOverflow.ellipsis,
+      softWrap: false,
+      maxLines: maxLines,
+    );
+  }
+}
+
 class TextHeader extends StatelessWidget {
-  final String text, fontColor;
+  final String text;
+  final Color fontColor;
   final double fontSize;
 
   TextHeader(
-      {this.fontSize = 24, this.fontColor = '#FDFDF5', required this.text});
+      {this.fontSize = 24,
+      this.fontColor = const Color(0xffFDFDF5),
+      required this.text});
 
   @override
   Widget build(BuildContext context) {
     return Text(text,
         style: TextStyle(
-          color: HexColor(this.fontColor),
+          color: fontColor,
           fontSize: fontSize,
           fontFamily: GoogleFonts.roboto().toString(),
+          fontWeight: FontWeight.w800,
         ),
         overflow: TextOverflow.ellipsis);
   }
 }
 
 class SmallText extends StatelessWidget {
-  final String text, fontColor;
+  final String text;
+  final Color fontColor;
   final double fontSize;
   final int maxLines;
 
   SmallText({
     required this.text,
-    this.fontColor = '#44483E',
+    this.fontColor = const Color(0xff44483E),
     this.fontSize = 14,
     this.maxLines = 1,
   });
@@ -42,7 +76,7 @@ class SmallText extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        color: HexColor(fontColor),
+        color: fontColor,
         fontSize: fontSize,
         overflow: TextOverflow.ellipsis,
         fontFamily: GoogleFonts.roboto().toString(),
@@ -53,22 +87,29 @@ class SmallText extends StatelessWidget {
 }
 
 class BoldText extends StatelessWidget {
-  final String text, fontColor;
+  final String text;
+  final Color fontColor;
   final double fontSize;
+  final int maxLines;
 
   const BoldText(
-      {required this.text, this.fontColor = '#000000', this.fontSize = 12});
+      {required this.text,
+      this.fontColor = const Color(0xff000000),
+      this.fontSize = 12,
+      this.maxLines = 1});
 
   Widget build(BuildContext context) {
     return Text(
       text,
       style: TextStyle(
-        color: HexColor(fontColor),
+        color: fontColor,
         fontSize: fontSize,
-        overflow: TextOverflow.ellipsis,
         fontFamily: GoogleFonts.roboto().toString(),
         fontWeight: FontWeight.w800,
       ),
+      overflow: TextOverflow.ellipsis,
+      softWrap: false,
+      maxLines: maxLines,
     );
   }
 }

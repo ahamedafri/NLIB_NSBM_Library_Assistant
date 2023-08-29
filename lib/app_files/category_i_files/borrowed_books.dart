@@ -67,7 +67,7 @@ class _BorrowedBooks extends State<BorrowedBooks> {
               BoldText(
                 text: 'begine date here',
                 fontSize: 14,
-                fontColor: AppColorsStringFormat.GRAY_COLOR,
+                fontColor: AppColors.GRAY_COLOR,
               ),
               SizedBox(height: 10),
               BoldText(
