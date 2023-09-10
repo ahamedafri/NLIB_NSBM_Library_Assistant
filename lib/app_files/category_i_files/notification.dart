@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nlib_library_assistant/utils/app_colors.dart';
+import 'package:nlib_library_assistant/utils/dimentions.dart';
 import 'package:nlib_library_assistant/widgets/text_formatter.dart';
 
 class notification extends StatelessWidget {
@@ -14,7 +15,7 @@ class notification extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 10),
+            SizedBox(height: Dimentions.height10),
             ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
@@ -28,13 +29,24 @@ class notification extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: Align(
+        alignment: Alignment.bottomRight,
+        child: FloatingActionButton(
+          backgroundColor: AppColors.BUTTON_COLOR,
+          child: Icon(
+            Icons.add,
+            color: AppColors.ICON_WHITE,
+          ),
+          onPressed: () {},
+        ),
+      ),
     );
   }
 
   Widget notificationPane() {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.only(bottom: 5),
+      margin: EdgeInsets.only(bottom: Dimentions.height5),
       decoration: BoxDecoration(
         border: Border(
           top: BorderSide(color: AppColors.NOTIFICATION_TEXT_COLOR),
@@ -45,16 +57,16 @@ class notification extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(width: 10),
+          SizedBox(width: Dimentions.width10),
           Container(
             color: Colors.white,
-            height: 100,
-            width: 50,
+            height: Dimentions.height100,
+            width: Dimentions.width50,
             child: Stack(
               children: [
                 Container(
-                  height: 95,
-                  width: 45,
+                  height: Dimentions.height100,
+                  width: Dimentions.width40,
                   decoration: BoxDecoration(
                     border: Border(
                       top: BorderSide(color: Colors.black),
@@ -67,18 +79,21 @@ class notification extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(width: 20),
+          SizedBox(width: Dimentions.width20),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                width: 300,
+                width: Dimentions.width300,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    TextHeader(
-                      text: 'Available Now',
-                      fontColor: AppColors.NOTIFICATION_TEXT_COLOR,
+                    SizedBox(
+                      width: Dimentions.width250,
+                      child: TextHeader(
+                        text: 'Available Now',
+                        fontColor: AppColors.NOTIFICATION_TEXT_COLOR,
+                      ),
                     ),
                     Icon(
                       Icons.notifications,
@@ -88,10 +103,10 @@ class notification extends StatelessWidget {
                 ),
               ),
               Container(
-                width: 300,
+                width: Dimentions.width300,
                 child: SmallText(
                   text: 'the element of style message will be displayed here.',
-                  maxLines: 3,
+                  maxLines: 2,
                 ),
               )
             ],

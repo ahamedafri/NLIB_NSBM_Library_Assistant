@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nlib_library_assistant/utils/app_colors.dart';
+import 'package:nlib_library_assistant/utils/dimentions.dart';
 import 'package:nlib_library_assistant/widgets/text_formatter.dart';
 
 class BorrowedBooks extends StatefulWidget {
@@ -36,7 +37,7 @@ class _BorrowedBooks extends State<BorrowedBooks> {
   Widget listContainer() {
     return Container(
       width: double.infinity,
-      height: 100,
+      height: Dimentions.height100,
       margin: EdgeInsets.only(left: 15, right: 15),
       decoration: BoxDecoration(
         border: Border(
@@ -51,28 +52,42 @@ class _BorrowedBooks extends State<BorrowedBooks> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              BoldText(text: 'Head First Java', fontSize: 20),
-              SizedBox(height: 10),
-              SmallText(text: 'kathy sierra'),
+              SizedBox(
+                width: Dimentions.width150,
+                child: Center(
+                  child: BoldText(
+                      text: 'Head First Java checking the overlapping',
+                      fontSize: Dimentions.font20),
+                ),
+              ),
+              SizedBox(height: Dimentions.height10),
+              SizedBox(
+                width: Dimentions.width150,
+                child: Center(
+                    child: SmallText(
+                  text: 'kathy sierra, checking the overlowing cabaility',
+                  maxLines: 2,
+                )),
+              ),
             ],
           ),
           Container(
-            height: 90,
-            width: 50,
+            height: Dimentions.height100,
+            width: Dimentions.width50,
             color: AppColors.BASE_COLOR,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               BoldText(
-                text: 'begine date here',
-                fontSize: 14,
+                text: '2023/23/23',
+                fontSize: Dimentions.font14,
                 fontColor: AppColors.GRAY_COLOR,
               ),
-              SizedBox(height: 10),
+              SizedBox(height: Dimentions.height10),
               BoldText(
-                text: 'end date here',
-                fontSize: 14,
+                text: '2023/23/23',
+                fontSize: Dimentions.font14,
               ),
             ],
           )

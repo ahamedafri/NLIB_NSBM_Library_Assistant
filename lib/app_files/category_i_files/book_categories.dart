@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nlib_library_assistant/utils/dimentions.dart';
 import '../../widgets/text_formatter.dart';
 import '../../utils/app_colors.dart';
 
@@ -20,19 +21,17 @@ class _BookCategories extends State<BookCategories> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 40),
+            SizedBox(height: Dimentions.height40),
             ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: 6,
                 itemBuilder: ((context, index) {
                   return Container(
-                    margin: EdgeInsets.all(10),
+                    margin: EdgeInsets.all(Dimentions.height10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        categoryCard(),
-                        SizedBox(width: 20),
                         categoryCard(),
                       ],
                     ),
@@ -46,18 +45,20 @@ class _BookCategories extends State<BookCategories> {
 
   Widget categoryCard() {
     return Container(
-      width: 160,
-      height: 160,
+      width: Dimentions.width300,
+      height: Dimentions.height300,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10), color: AppColors.BASE_COLOR),
+          borderRadius: BorderRadius.circular(Dimentions.radius10),
+          color: AppColors.BASE_COLOR),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          SizedBox(height: Dimentions.height20),
           Container(
-            width: 150,
-            height: 100,
+            width: Dimentions.width150,
+            height: Dimentions.height100,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(Dimentions.radius10),
             ),
             child: InkWell(
               onTap: () {},
@@ -72,8 +73,8 @@ class _BookCategories extends State<BookCategories> {
             ),
           ),
           Container(
-            width: 140,
-            height: 50,
+            width: Dimentions.width150,
+            height: Dimentions.height50,
             child: Center(
               child: BoldText(text: "Engineering"),
             ),

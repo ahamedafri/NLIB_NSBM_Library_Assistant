@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nlib_library_assistant/utils/app_colors.dart';
+import 'package:nlib_library_assistant/utils/dimentions.dart';
 import 'package:nlib_library_assistant/widgets/text_formatter.dart';
 
 import '../../widgets/rounded_button.dart';
@@ -18,7 +19,7 @@ class SlidDrawer extends StatelessWidget {
             accountName: TextHeader(text: 'W.D.Fernando'),
             accountEmail: TextHeader(
               text: 'wdfernando@students.nsbm.ac.lk',
-              fontSize: 12,
+              fontSize: Dimentions.font12,
             ),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(),
@@ -30,11 +31,9 @@ class SlidDrawer extends StatelessWidget {
           buttonPanes(text: 'Notification', icon: Icon(Icons.notifications)),
           buttonPanes(text: 'Favourite', icon: Icon(Icons.favorite)),
           buttonPanes(text: 'Settings', icon: Icon(Icons.settings)),
-          buttonPanes(
-              text: 'Help and support', icon: Icon(Icons.help_outlined)),
-          SizedBox(height: 50),
+          SizedBox(height: Dimentions.height50),
           Padding(
-            padding: EdgeInsets.all(50),
+            padding: EdgeInsets.all(Dimentions.height50),
             child: RoundButton(
               buttonText: 'LogOut',
             ),

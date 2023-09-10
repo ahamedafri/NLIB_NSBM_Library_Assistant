@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nlib_library_assistant/utils/app_colors.dart';
 import 'package:nlib_library_assistant/widgets/text_formatter.dart';
 
+import '../../utils/dimentions.dart';
+
 class Profile extends StatefulWidget {
   @override
   _Profile createState() => _Profile();
@@ -9,10 +11,10 @@ class Profile extends StatefulWidget {
 
 class _Profile extends State<Profile> {
   //default values for expansion tiles
-  double containerPadding = 20,
-      rowLeftPadding = 40,
-      iconSize = 18,
-      titleFontSize = 14;
+  double containerPadding = Dimentions.height20,
+      rowLeftPadding = Dimentions.width40,
+      iconSize = Dimentions.icon18,
+      titleFontSize = Dimentions.font14;
   Color iconColor = AppColors.ICON_WHITE;
 
   @override
@@ -27,36 +29,36 @@ class _Profile extends State<Profile> {
             children: [
               Container(
                 width: double.maxFinite,
-                height: 300,
+                height: Dimentions.height300,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20),
+                    bottomLeft: Radius.circular(Dimentions.radius20),
+                    bottomRight: Radius.circular(Dimentions.radius20),
                   ),
                   color: AppColors.BASE_COLOR,
                 ),
               ),
               Positioned(
-                top: 220,
+                top: Dimentions.height220,
                 child: CircleAvatar(
-                  minRadius: 80,
+                  minRadius: Dimentions.radius80,
                   backgroundColor: AppColors.CONTAINER_WHITE,
                   child: CircleAvatar(
-                    radius: 70,
+                    radius: Dimentions.radius70,
                     backgroundColor: AppColors.BUTTON_COLOR,
                   ),
                 ),
               ),
               Positioned(
-                top: 285,
-                left: 220,
+                top: Dimentions.height280,
+                left: Dimentions.width220,
                 child: InkWell(
                   onTap: () {},
                   child: Container(
-                    padding: EdgeInsets.all(20),
+                    padding: EdgeInsets.all(Dimentions.height20),
                     child: CircleAvatar(
                       backgroundColor: AppColors.BUTTON_COLOR,
-                      radius: 20,
+                      radius: Dimentions.radius20,
                       child: Icon(
                         Icons.camera_alt,
                         color: AppColors.ICON_WHITE,
@@ -66,14 +68,14 @@ class _Profile extends State<Profile> {
                 ),
               ),
               Positioned(
-                top: 390,
+                top: Dimentions.height390,
                 child: Column(
                   children: [
                     TextHeader(
                       text: 'Olivia Austin',
                       fontColor: AppColors.NORMAL_TEXT_COLOR,
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: Dimentions.height10),
                     SmallText(
                       text: 'oliva@students.nsbm.ac.lk',
                       fontColor: AppColors.FADED_TEXT_COLOR,
@@ -83,7 +85,7 @@ class _Profile extends State<Profile> {
               ),
             ],
           ),
-          SizedBox(height: 160),
+          SizedBox(height: Dimentions.height160),
           Column(
             children: [
               ExpansionTile(
@@ -99,9 +101,9 @@ class _Profile extends State<Profile> {
                           size: iconSize,
                         ),
                       ),
-                      SizedBox(width: 10),
+                      SizedBox(width: Dimentions.width10),
                       Padding(
-                        padding: EdgeInsets.only(left: 2),
+                        padding: EdgeInsets.only(left: Dimentions.width2),
                         child: BoldText(
                           text: 'About Me',
                           fontSize: titleFontSize,
@@ -118,17 +120,19 @@ class _Profile extends State<Profile> {
                   ),
                 ],
               ),
-              SizedBox(height: 50),
+              SizedBox(height: Dimentions.height50),
               buttonTiles(
                   icon: Icons.favorite,
                   titleText: 'My Favourite',
                   buttonIndex: 0),
-              SizedBox(height: 35),
+              SizedBox(height: Dimentions.height30),
               buttonTiles(
                   icon: Icons.notifications_none,
                   titleText: 'Notification',
-                  buttonIndex: 1),
-              SizedBox(height: 35),
+                  buttonIndex: 1,
+                  isCountNotificationShowable: true,
+                  notificationCount: '99'),
+              SizedBox(height: Dimentions.height30),
               signOutTile(),
             ],
           )
@@ -140,7 +144,9 @@ class _Profile extends State<Profile> {
   Widget buttonTiles(
       {required IconData icon,
       required String titleText,
-      required int buttonIndex}) {
+      required int buttonIndex,
+      bool isCountNotificationShowable = false,
+      String notificationCount = "2"}) {
     return InkWell(
       onTap: () {},
       child: Container(
@@ -158,9 +164,9 @@ class _Profile extends State<Profile> {
                     size: iconSize,
                   ),
                 ),
-                SizedBox(width: 10),
+                SizedBox(width: Dimentions.width10),
                 Padding(
-                  padding: EdgeInsets.only(left: 2),
+                  padding: EdgeInsets.only(left: Dimentions.width2),
                   child: BoldText(
                     text: titleText,
                     fontSize: titleFontSize,
@@ -168,14 +174,41 @@ class _Profile extends State<Profile> {
                 ),
               ],
             ),
-            Padding(
-              padding: EdgeInsets.only(right: 40),
-              child: Icon(
-                Icons.arrow_forward_ios,
-                size: iconSize,
-                color: AppColors.GRAY_COLOR,
-              ),
-            ),
+            isCountNotificationShowable
+                ? Row(
+                    children: [
+                      Container(
+                        width: Dimentions.width30,
+                        height: Dimentions.height30,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColors.WARNING_TEXT_COLOR,
+                        ),
+                        child: Center(
+                          child: BoldText(
+                            text: notificationCount,
+                            fontColor: AppColors.HEADER_TEXT_COLOR,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(right: Dimentions.width40),
+                        child: Icon(
+                          Icons.arrow_forward_ios,
+                          size: iconSize,
+                          color: AppColors.GRAY_COLOR,
+                        ),
+                      ),
+                    ],
+                  )
+                : Padding(
+                    padding: EdgeInsets.only(right: Dimentions.width40),
+                    child: Icon(
+                      Icons.arrow_forward_ios,
+                      size: iconSize,
+                      color: AppColors.GRAY_COLOR,
+                    ),
+                  ),
           ],
         ),
       ),
@@ -200,9 +233,9 @@ class _Profile extends State<Profile> {
                     size: iconSize,
                   ),
                 ),
-                SizedBox(width: 10),
+                SizedBox(width: Dimentions.width10),
                 Padding(
-                  padding: EdgeInsets.only(right: 40),
+                  padding: EdgeInsets.only(right: Dimentions.width40),
                   child: BoldText(
                     text: 'Sign out',
                     fontSize: titleFontSize,

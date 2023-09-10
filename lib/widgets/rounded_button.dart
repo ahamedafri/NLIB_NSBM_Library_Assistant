@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nlib_library_assistant/widgets/text_formatter.dart';
 
+import '../utils/dimentions.dart';
+
 class RoundButton extends StatelessWidget {
   final String buttonText;
   final Color buttonColor, fontColor, borderColor;
@@ -17,10 +19,10 @@ class RoundButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: buttonWidth,
-      height: buttonHeight,
+      width: buttonWidth == 100 ? Dimentions.width100 : buttonWidth,
+      height: buttonHeight == 50 ? Dimentions.height50 : buttonHeight,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(Dimentions.radius20),
         color: buttonColor,
         border: Border.all(color: borderColor),
       ),
@@ -28,7 +30,7 @@ class RoundButton extends StatelessWidget {
         child: SmallText(
           text: buttonText,
           fontColor: fontColor,
-          fontSize: 20,
+          fontSize: Dimentions.font20,
         ),
       ),
     );

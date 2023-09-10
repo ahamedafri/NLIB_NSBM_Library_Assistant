@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utils/dimentions.dart';
+
 class DotsIndicatorContainers extends StatelessWidget {
   final int changingNumber;
   final Color activeDotColor, normalDotColor;
@@ -13,8 +15,8 @@ class DotsIndicatorContainers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 150,
-      height: 100,
+      width: Dimentions.width150,
+      height: Dimentions.height100,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -28,10 +30,10 @@ class DotsIndicatorContainers extends StatelessWidget {
 
   Widget activeDotContainer() {
     return Container(
-      width: 50,
-      height: 10,
+      width: Dimentions.width50,
+      height: Dimentions.height10,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(Dimentions.radius10),
         color: activeDotColor,
       ),
     );
@@ -39,8 +41,8 @@ class DotsIndicatorContainers extends StatelessWidget {
 
   Widget inactiveDotContainer() {
     return Container(
-      width: 10,
-      height: 10,
+      width: Dimentions.width10,
+      height: Dimentions.height10,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: normalDotColor,

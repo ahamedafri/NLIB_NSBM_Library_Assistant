@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:nlib_library_assistant/utils/app_colors.dart';
+import 'package:nlib_library_assistant/utils/dimentions.dart';
 import 'package:nlib_library_assistant/widgets/text_formatter.dart';
 import './drawer.dart';
 
-class FavouriteBooks extends StatelessWidget {
+class FavouriteBooks extends StatefulWidget {
+  _FavouriteBooksState createState() => _FavouriteBooksState();
+}
+
+class _FavouriteBooksState extends State<FavouriteBooks> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: SlidDrawer(),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        toolbarHeight: 80,
+        toolbarHeight: Dimentions.height80,
         backgroundColor: AppColors.CONTAINER_WHITE,
         title: Container(
           child: Column(children: [
-            SizedBox(height: 10),
+            SizedBox(height: Dimentions.height10),
             Center(
               child: Container(
-                height: 60,
-                width: 380,
+                height: Dimentions.height60,
+                width: Dimentions.width380,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30.0),
+                  borderRadius: BorderRadius.circular(Dimentions.radius30),
                   color: AppColors.BASE_COLOR,
                 ),
                 child: Stack(
@@ -30,37 +35,37 @@ class FavouriteBooks extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           SizedBox(
-                              width: 200,
+                              width: Dimentions.width200,
                               child: TextField(
                                 decoration:
                                     InputDecoration(hintText: 'Search here'),
                               )),
                           SizedBox(
-                            width: 10,
+                            width: Dimentions.width10,
                           ),
-                          SizedBox(width: 10),
+                          SizedBox(width: Dimentions.width10),
                           Row(
                             children: [
                               InkWell(
                                 onTap: () {},
                                 child: Container(
-                                  width: 50,
-                                  height: 50,
+                                  width: Dimentions.width50,
+                                  height: Dimentions.height50,
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       color: AppColors.BASE_COLOR),
                                   child: Icon(Icons.search),
                                 ),
                               ),
-                              SizedBox(width: 10),
+                              SizedBox(width: Dimentions.width10),
                               Builder(builder: (context) {
                                 return InkWell(
                                   onTap: () {
                                     Scaffold.of(context).openDrawer();
                                   },
                                   child: Container(
-                                    height: 50,
-                                    width: 50,
+                                    height: Dimentions.height50,
+                                    width: Dimentions.width50,
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: AppColors.CONTAINER_WHITE),
@@ -70,7 +75,7 @@ class FavouriteBooks extends StatelessWidget {
                             ],
                           ),
                           SizedBox(
-                            width: 5,
+                            width: Dimentions.width5,
                           ),
                         ],
                       ),
@@ -91,8 +96,11 @@ class FavouriteBooks extends StatelessWidget {
                 itemBuilder: ((context, index) {
                   return Container(
                     width: double.infinity,
-                    height: 100,
-                    margin: EdgeInsets.only(left: 15, right: 15),
+                    height: Dimentions.height100,
+                    margin: EdgeInsets.only(
+                      left: Dimentions.width15,
+                      right: Dimentions.width15,
+                    ),
                     decoration: BoxDecoration(
                       border: Border(
                         bottom: BorderSide(
@@ -101,28 +109,37 @@ class FavouriteBooks extends StatelessWidget {
                       ),
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          height: 90,
-                          width: 50,
+                          height: Dimentions.height90,
+                          width: Dimentions.width50,
                           color: AppColors.BASE_COLOR,
                         ),
-                        SizedBox(width: 50),
+                        SizedBox(width: Dimentions.width50),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             BoldText(
                               text: 'Head First Java',
-                              fontSize: 14,
+                              fontSize: Dimentions.font14,
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height: Dimentions.height10),
                             SmallText(
                               text: 'kathy sierra',
-                              fontSize: 10,
+                              fontSize: Dimentions.font10,
                             ),
                           ],
                         ),
+                        SizedBox(width: Dimentions.width100),
+                        FloatingActionButton(
+                          backgroundColor: AppColors.BUTTON_COLOR,
+                          onPressed: () {},
+                          child: Icon(
+                            Icons.favorite,
+                            color: AppColors.ICON_WHITE,
+                          ),
+                        )
                       ],
                     ),
                   );

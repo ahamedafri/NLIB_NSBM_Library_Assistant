@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/get_core.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:nlib_library_assistant/utils/app_colors.dart';
-import 'package:nlib_library_assistant/utils/dimentions.dart';
-import 'package:nlib_library_assistant/widgets/text_formatter.dart';
 
-class DynamicBook extends StatefulWidget {
-  final int pageId;
-  const DynamicBook({super.key, required this.pageId});
+import '../../utils/app_colors.dart';
+import '../../utils/dimentions.dart';
+import '../../widgets/text_formatter.dart';
 
-  _DynamicBookState createState() => _DynamicBookState();
+class BorrowedBookDetails extends StatefulWidget {
+  BorrowedBookDetails();
+  _BorrowedBookDetailsState createState() => _BorrowedBookDetailsState();
 }
 
-class _DynamicBookState extends State<DynamicBook> {
+class _BorrowedBookDetailsState extends State<BorrowedBookDetails> {
   bool isClickedFavouriteButton = false;
   Color buttonBackColor = AppColors.CONTAINER_WHITE,
       iconColor = AppColors.ICON_GRAY;
@@ -34,18 +31,13 @@ class _DynamicBookState extends State<DynamicBook> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            automaticallyImplyLeading: false,
             pinned: true,
             expandedHeight: Dimentions.height650,
             toolbarHeight: Dimentions.height70,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: Icon(Icons.arrow_back_ios)),
+                Icon(Icons.arrow_back_ios),
               ],
             ),
             bottom: PreferredSize(
@@ -62,10 +54,13 @@ class _DynamicBookState extends State<DynamicBook> {
                 child: Center(
                   child: SizedBox(
                     width: Dimentions.width300,
-                    child: TextHeader(
-                      text: 'Harry Potter and the order of the phoenix',
-                      fontColor: AppColors.NORMAL_TEXT_COLOR,
-                      maxLines: 10,
+                    child: Center(
+                      child: TextHeader(
+                        text:
+                            'Harry Potter and the order of the phoenix checking whehther the overflowing happenning properly',
+                        fontColor: AppColors.NORMAL_TEXT_COLOR,
+                        maxLines: 10,
+                      ),
                     ),
                   ),
                 ),
@@ -91,52 +86,29 @@ class _DynamicBookState extends State<DynamicBook> {
                           child: SizedBox(
                               width: Dimentions.width300,
                               child: Center(
-                                child: SmallText(
-                                  text: 'by Jk rowlings',
-                                  maxLines: 3,
-                                ),
-                              )),
+                                  child: SmallText(
+                                text: 'by Jk rowlings',
+                                maxLines: 3,
+                              ))),
                         ),
                         SizedBox(height: Dimentions.height50),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SizedBox(width: Dimentions.width80),
-                            SizedBox(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  pointSettings(
-                                      text: 'No. of copies available: 04'),
-                                  pointSettings(text: 'No. of copies taken: 03')
-                                ],
-                              ),
+                            Column(
+                              children: [
+                                SmallText(text: 'The book is taken on'),
+                                SmallText(text: 'on 2023/23/23'),
+                              ],
+                            ),
+                            SizedBox(width: Dimentions.width40),
+                            Column(
+                              children: [
+                                SmallText(text: 'The book has to be return,'),
+                                BoldText(text: 'on 2023/23/23'),
+                              ],
                             ),
                           ],
-                        ),
-                        SizedBox(height: Dimentions.height50),
-                        Container(
-                          width: Dimentions.width210,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.circular(Dimentions.radius20),
-                            color: AppColors.CONTAINER_WHITE,
-                            border: Border.all(color: AppColors.CONTAINER_GRAY),
-                          ),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.bookmark,
-                                color: AppColors.GRAY_COLOR,
-                              ),
-                              SizedBox(width: Dimentions.width10),
-                              SmallText(
-                                text: 'the book will available on',
-                                fontColor: AppColors.FADED_TEXT_COLOR,
-                              ),
-                            ],
-                          ),
                         ),
                       ],
                     ),
@@ -167,21 +139,6 @@ class _DynamicBookState extends State<DynamicBook> {
           )
         ]),
       ),
-    );
-  }
-
-  Widget pointSettings({required String text}) {
-    return Row(
-      children: [
-        Container(
-          height: Dimentions.height10,
-          width: Dimentions.width10,
-          decoration: BoxDecoration(
-              shape: BoxShape.circle, color: AppColors.CONTAINER_BLACK),
-        ),
-        SizedBox(width: Dimentions.width10),
-        SmallText(text: '$text'),
-      ],
     );
   }
 }

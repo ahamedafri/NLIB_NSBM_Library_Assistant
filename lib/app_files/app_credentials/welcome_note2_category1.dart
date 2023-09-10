@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:nlib_library_assistant/form_integration/form_integrater.dart';
 
+import '../../utils/dimentions.dart';
 import '../../widgets/dots_indicator.dart';
 import '../../widgets/images.dart';
 import '../../widgets/rounded_button.dart';
@@ -14,8 +18,9 @@ class Category1WelcomeNote2 extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            WelcomeNoteImage(imageUrl: ""),
-            SizedBox(height: 25),
+            WelcomeNoteImage(
+                imageUrl: "./asset/welcome_images/category_i/2.png"),
+            SizedBox(height: Dimentions.height25),
             Center(
               child: WelcomeFont(
                 text: 'Save Your',
@@ -26,9 +31,9 @@ class Category1WelcomeNote2 extends StatelessWidget {
                 text: 'Favorite Book',
               ),
             ),
-            SizedBox(height: 25),
+            SizedBox(height: Dimentions.height25),
             Padding(
-              padding: EdgeInsets.all(5.0),
+              padding: EdgeInsets.all(Dimentions.height5),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -43,12 +48,18 @@ class Category1WelcomeNote2 extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 35),
+            SizedBox(height: Dimentions.height30),
             // Add spacing between text and button
             DotsIndicatorContainers(changingNumber: 1),
 
-            SizedBox(height: 30),
-            RoundButton(buttonText: 'Next', buttonWidth: 200),
+            SizedBox(height: Dimentions.height30),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(FormIntegrator.getWelcomeNote3Category1());
+              },
+              child: RoundButton(
+                  buttonText: 'Next', buttonWidth: Dimentions.width200),
+            ),
           ],
         ),
       ),

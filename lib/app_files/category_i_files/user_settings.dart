@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nlib_library_assistant/utils/app_colors.dart';
 
+import '../../utils/dimentions.dart';
 import '../../widgets/rounded_button.dart';
 import '../../widgets/text_formatter.dart';
 
@@ -43,32 +44,39 @@ class _UserSettings extends State<UserSettings> {
               });
             }),
             Container(
-              padding: EdgeInsets.only(left: 20, right: 50),
+              padding: EdgeInsets.only(
+                left: Dimentions.width20,
+                right: Dimentions.width50,
+              ),
               child: SmallText(
                 text:
                     "Any lorem word about 20 word count Any lorem word about 20",
                 maxLines: 2,
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: Dimentions.height10),
             customSwitch("Privacy Visibility", _privacyVisibility, (value) {
               setState(() {
                 _privacyVisibility = value;
               });
             }),
             Container(
-              padding: EdgeInsets.only(left: 20, right: 50),
+              padding: EdgeInsets.only(
+                left: Dimentions.width20,
+                right: Dimentions.width50,
+              ),
               child: SmallText(
                 text:
                     "Any lorem word about 20 word count Any lorem word about 20",
                 maxLines: 2,
               ),
             ),
-            SizedBox(height: 355),
+            SizedBox(height: Dimentions.height350),
             Align(
               alignment: Alignment.center,
-              child:
-                  RoundButton(buttonText: 'Save setttings', buttonWidth: 300),
+              child: RoundButton(
+                  buttonText: 'Save setttings',
+                  buttonWidth: Dimentions.width300),
             ),
           ],
         ),
@@ -78,7 +86,10 @@ class _UserSettings extends State<UserSettings> {
 
   Widget customSwitch(String text, bool value, void Function(bool) onChanged) {
     return Padding(
-      padding: EdgeInsets.only(top: 50.0, left: 16.0, right: 16.0),
+      padding: EdgeInsets.only(
+          top: Dimentions.height50,
+          left: Dimentions.width16,
+          right: Dimentions.width16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

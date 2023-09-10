@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:get/get_core/get_core.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:nlib_library_assistant/form_integration/form_integrater.dart';
+import '../../utils/dimentions.dart';
 import '../../widgets/rounded_button.dart';
 import './drawer.dart';
 import '../../utils/app_colors.dart';
@@ -13,9 +17,10 @@ class MainHomePage extends StatefulWidget {
 }
 
 class _MainHomePage extends State<MainHomePage> {
+  FocusNode searchBookFocusTextField = FocusNode();
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currentPageValue = 0.0;
-  double _schaleFactor = 0.8, _height = 220.0;
+  double _schaleFactor = 0.8, _height = Dimentions.height220;
   int currentTab = 0;
   final List<Widget> screens = [];
   final PageStorageBucket bucket = PageStorageBucket();
@@ -46,17 +51,17 @@ class _MainHomePage extends State<MainHomePage> {
       drawer: SlidDrawer(),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        toolbarHeight: 80,
+        toolbarHeight: Dimentions.height80,
         backgroundColor: Colors.white,
         title: Container(
           child: Column(children: [
-            SizedBox(height: 10),
+            SizedBox(height: Dimentions.height10),
             Center(
               child: Container(
-                height: 60,
-                width: 380,
+                height: Dimentions.height60,
+                width: Dimentions.width380,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30.0),
+                  borderRadius: BorderRadius.circular(Dimentions.radius30),
                   color: AppColors.BASE_COLOR,
                 ),
                 child: Stack(
@@ -66,42 +71,44 @@ class _MainHomePage extends State<MainHomePage> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           SizedBox(
-                              width: 200,
+                              width: Dimentions.width200,
                               child: TextField(
+                                focusNode: searchBookFocusTextField,
                                 decoration: InputDecoration(
                                   hintText: 'Search Here',
                                 ),
                               )),
                           SizedBox(
-                            width: 10,
+                            width: Dimentions.width10,
                           ),
-                          SizedBox(width: 10),
+                          SizedBox(width: Dimentions.width10),
                           Row(
                             children: [
-                              InkWell(
-                                onTap: () {},
-                                child: Container(
-                                  width: 50,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: AppColors.BASE_COLOR,
-                                  ),
-                                  child: IconButton(
-                                    icon: Icon(Icons.search),
-                                    onPressed: () {},
-                                  ),
+                              Container(
+                                width: Dimentions.width50,
+                                height: Dimentions.height50,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppColors.BASE_COLOR,
+                                ),
+                                child: IconButton(
+                                  icon: Icon(Icons.search),
+                                  iconSize: Dimentions.icon24,
+                                  onPressed: () {
+                                    Get.toNamed(
+                                        FormIntegrator.getSearchResults());
+                                  },
                                 ),
                               ),
-                              SizedBox(width: 10),
+                              SizedBox(width: Dimentions.width10),
                               Builder(builder: (context) {
                                 return InkWell(
                                   onTap: () {
                                     Scaffold.of(context).openDrawer();
                                   },
                                   child: Container(
-                                    height: 50,
-                                    width: 50,
+                                    width: Dimentions.width50,
+                                    height: Dimentions.height50,
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Colors.white),
@@ -111,7 +118,7 @@ class _MainHomePage extends State<MainHomePage> {
                             ],
                           ),
                           SizedBox(
-                            width: 5,
+                            width: Dimentions.width5,
                           ),
                         ],
                       ),
@@ -128,19 +135,19 @@ class _MainHomePage extends State<MainHomePage> {
           children: [
             //first user name page
             Container(
-              width: 350,
-              height: 100,
+              width: Dimentions.width350,
+              height: Dimentions.height100,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(Dimentions.radius20),
                 color: AppColors.BASE_COLOR,
               ),
               child: Padding(
-                padding: EdgeInsets.only(left: 15),
+                padding: EdgeInsets.only(left: Dimentions.width15),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 25),
+                    SizedBox(height: Dimentions.height25),
                     SmallText(
                       text: 'Welcome Back',
                     ),
@@ -149,12 +156,12 @@ class _MainHomePage extends State<MainHomePage> {
                 ),
               ),
             ),
-            SizedBox(height: 40),
+            SizedBox(height: Dimentions.height40),
 
             //heading messages as advertisments
             Container(
               //color: Colors.redAccent,
-              height: 220,
+              height: _height,
               child: PageView.builder(
                   controller: pageController,
                   itemCount: 5,
@@ -175,108 +182,149 @@ class _MainHomePage extends State<MainHomePage> {
               ),
             ),
 
-            SizedBox(height: 20),
+            SizedBox(height: Dimentions.height20),
             //seat count
             mainCard(
+              cardIndex: 0,
               mainHeader: 'Seat Count',
               description:
                   'Check wetherh your seat ready and available before visiting inside the library',
               buttonText: 'Refresh',
+              imageUrl: "./asset/home_images/1.png",
+              bottom: Dimentions.height100,
+              pictureContainerHeight: Dimentions.height200,
             ),
-            SizedBox(height: 20),
+            SizedBox(height: Dimentions.height20),
 
             //book search page
             mainCard(
+              cardIndex: 1,
               mainHeader: 'Search Book',
               description:
                   'You can search a book title and check whether the book is available.',
               buttonText: 'Search',
+              imageUrl: "./asset/home_images/1.png",
+              bottom: Dimentions.height100,
+              pictureContainerHeight: Dimentions.height200,
             ),
-            SizedBox(height: 20),
+            SizedBox(height: Dimentions.height20),
 
             mainCard(
-                mainHeader: 'Reserve a study room',
-                description:
-                    'You can reserve a study room through the app, if rooms are available',
-                buttonText: 'Check'),
-            SizedBox(height: 20),
+              cardIndex: 2,
+              mainHeader: 'Reserve a study room',
+              description:
+                  'You can reserve a study room through the app, if rooms are available',
+              buttonText: 'Check',
+              imageUrl: "./asset/home_images/2.png",
+            ),
+            SizedBox(height: Dimentions.height20),
           ],
         ),
       ),
     );
   }
 
-  Widget mainCard(
-      {required mainHeader,
-      required String description,
-      required String buttonText}) {
-    return Container(
-      width: 350,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: AppColors.CONTAINER_COLOR,
-      ),
-      child: Column(
-        children: [
-          //book search picture
-          Container(
-            margin: EdgeInsets.all(1),
-            height: 300,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20.2),
-                topRight: Radius.circular(20.0),
-              ),
-              color: AppColors.CONTAINER_COLOR,
-            ),
+  Widget mainCard({
+    required mainHeader,
+    required String description,
+    required String buttonText,
+    required String imageUrl,
+    required int cardIndex,
+    double left = 25,
+    double bottom = 200,
+    double pictureContainerHeight = 300,
+  }) {
+    return Stack(
+      children: [
+        Container(
+          width: Dimentions.width350,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(Dimentions.radius20),
+            color: AppColors.CONTAINER_COLOR,
           ),
-          //book search discription
-          Container(
-            margin: EdgeInsets.all(1),
-            height: 250,
-            width: 350,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20.2),
-                bottomRight: Radius.circular(20.0),
+          child: Column(
+            children: [
+              //book search picture
+              Container(
+                margin: EdgeInsets.all(1),
+                height: pictureContainerHeight == 300
+                    ? Dimentions.height300
+                    : pictureContainerHeight,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(Dimentions.radius20),
+                    topRight: Radius.circular(Dimentions.radius20),
+                  ),
+                  color: AppColors.CONTAINER_COLOR,
+                ),
               ),
-              color: Colors.white,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextHeader(
-                    text: mainHeader,
-                    fontColor: AppColors.NORMAL_TEXT_COLOR,
+              //book search discription
+              Container(
+                margin: EdgeInsets.all(1),
+                height: Dimentions.height250,
+                width: Dimentions.width350,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(Dimentions.radius20),
+                    bottomRight: Radius.circular(Dimentions.radius20),
                   ),
-                  SmallText(text: 'In Library'),
-                  SizedBox(height: 50),
-                  Container(
-                    child: SmallText(
-                      text: description,
-                      maxLines: 2,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                  color: AppColors.CONTAINER_WHITE,
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(Dimentions.height20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      InkWell(
-                        onTap: () {},
-                        child: RoundButton(
-                          buttonText: buttonText,
+                      TextHeader(
+                        text: mainHeader,
+                        fontColor: AppColors.NORMAL_TEXT_COLOR,
+                      ),
+                      SmallText(text: 'In Library'),
+                      SizedBox(height: Dimentions.height50),
+                      Container(
+                        child: SmallText(
+                          text: description,
+                          maxLines: 2,
                         ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          InkWell(
+                            onTap: () {},
+                            child: GestureDetector(
+                              onTap: () {
+                                if (cardIndex == 1) {
+                                  searchBookFocusTextField.requestFocus();
+                                } else if (cardIndex == 2) {
+                                  Get.toNamed(
+                                      FormIntegrator.getStudyRoomSelection());
+                                }
+                              },
+                              child: RoundButton(
+                                buttonText: buttonText,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
-        ],
-      ),
+        ),
+        Positioned(
+            left: left == 25 ? Dimentions.width25 : left,
+            bottom: bottom == 200 ? Dimentions.height200 : bottom,
+            width: Dimentions.width300,
+            height: Dimentions.height400,
+            child: Container(
+              child: Image.asset(imageUrl),
+            ))
+      ],
     );
   }
 
@@ -324,20 +372,38 @@ class _MainHomePage extends State<MainHomePage> {
       transform: matrix,
       child: Stack(
         children: [
-          Container(
-            //color: Colors.redAccent,
-            height: 220,
-            margin: EdgeInsets.only(left: 10, right: 10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              color: index.isEven
-                  ? AppColors.BASE_COLOR
-                  : AppColors.CONTAINER_COLOR,
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage(
-                  "",
-                ),
+          GestureDetector(
+            onTap: () {
+              Get.toNamed(FormIntegrator.getDynamicBook(index));
+            },
+            child: Container(
+              //color: Colors.redAccent,
+              width: Dimentions.width350,
+              height: _height,
+              padding: EdgeInsets.all(Dimentions.radius10),
+              margin: EdgeInsets.only(
+                  left: Dimentions.width10, right: Dimentions.width10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimentions.radius30),
+                border: Border.all(color: AppColors.CONTAINER_BLACK),
+                color: index.isEven
+                    ? AppColors.CONTAINER_WHITE
+                    : AppColors.CONTAINER_COLOR,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  BoldText(text: 'name of the author'),
+                  TextHeader(
+                      text: 'name of the author and the title is be here.',
+                      fontColor: AppColors.NORMAL_TEXT_COLOR),
+                  SmallText(
+                    text:
+                        'description will be the description will be the descriptionwill be the descriptionwill be the descriptionwill be the descriptionwill be the descriptionwill be the descriptionwill be the descriptionwill be the descriptionwill be the descriptionwill be the descriptionwill be the descriptionwill be the descriptionwill be the descriptionwill be the descriptionwill be the descriptionwill be the descriptionwill be the descriptionwill be the descriptionwill be the description',
+                    maxLines: 5,
+                  )
+                ],
               ),
             ),
           ),

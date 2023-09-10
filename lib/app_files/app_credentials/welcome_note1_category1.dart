@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nlib_library_assistant/utils/app_colors.dart';
+import 'package:get/get_core/get_core.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:nlib_library_assistant/form_integration/form_integrater.dart';
+import '../../utils/dimentions.dart';
 import 'package:nlib_library_assistant/widgets/text_formatter.dart';
 
 import '../../widgets/dots_indicator.dart';
@@ -15,8 +18,9 @@ class Category1WelcomeNote1 extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            WelcomeNoteImage(imageUrl: ""),
-            SizedBox(height: 25),
+            WelcomeNoteImage(
+                imageUrl: "./asset/welcome_images/category_i/1.png"),
+            SizedBox(height: Dimentions.height25),
             Center(
               child: WelcomeFont(
                 text: 'Search Library',
@@ -27,9 +31,9 @@ class Category1WelcomeNote1 extends StatelessWidget {
                 text: 'Book Online',
               ),
             ),
-            SizedBox(height: 25),
+            SizedBox(height: Dimentions.height25),
             Padding(
-              padding: EdgeInsets.all(5.0),
+              padding: EdgeInsets.all(Dimentions.height5),
               child: Center(
                 child: SmallText(
                   text:
@@ -38,12 +42,18 @@ class Category1WelcomeNote1 extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 35),
+            SizedBox(height: Dimentions.height30),
             // Add spacing between text and button
             DotsIndicatorContainers(changingNumber: 0),
 
             SizedBox(height: 30),
-            RoundButton(buttonText: 'Next', buttonWidth: 200),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(FormIntegrator.getWelcomeNote2Category1());
+              },
+              child: RoundButton(
+                  buttonText: 'Next', buttonWidth: Dimentions.width200),
+            ),
           ],
         ),
       ),

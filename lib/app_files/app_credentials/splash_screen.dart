@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nlib_library_assistant/utils/app_colors.dart';
+import '../../utils/dimentions.dart';
 //import 'loginstudent.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,8 +16,8 @@ class _SplashScreen extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: Container(
-          width: 250,
-          height: 250,
+          width: Dimentions.width250,
+          height: Dimentions.height250,
           color: AppColors.BASE_COLOR,
           // child: Image.asset(
           //   'assets/register.png',
